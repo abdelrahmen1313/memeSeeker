@@ -1,0 +1,22 @@
+{
+  "name": "nodedesk",
+  "version": "1.0.0",
+  "description": "a walkthrough for building nodejs GUIs under win64",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "npm run build-code && npm run build-bundle",
+    "build-code": "tsc",
+    "build-bundle": "esbuild build/main.js --sourcemap --bundle --outfile=dist/main.cjs --platform=node --format=cjs --external:@nodegui/nodegui \"--external:nodegui-plugin-*\"",
+    "clean": "rimraf build dist tmp-jam-pack-nodegui",
+    "package": "jam-pack-nodegui --config packaging/jam-pack-nodegui.json",
+    "start": "qode src/index.js"
+  },
+  "author": "dah",
+  "license": "ISC",
+  "dependencies": {
+    "@nodegui/nodegui": "^0.71.0",
+    "axios": "^1.8.4",
+    "ollama": "^0.5.15"
+  }
+}
