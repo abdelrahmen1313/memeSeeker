@@ -1,4 +1,4 @@
-import { FlexLayout, QLabel, QMainWindow, QScrollArea, QWidget, QIcon,
+import { FlexLayout, QLabel, QMainWindow, QScrollArea, QWidget, QIcon, QSystemTrayIcon
 } from "@nodegui/nodegui";
 import { searchGifs } from "./utils/searchGif.js";
 import { getGifViews } from "./views/GifViews.js";
@@ -6,14 +6,17 @@ import { createSearchContainer } from "./views/SearchContainer.js";
 
 import { searchTerms, addSearchTerm } from "./utils/searchTerms.js";
 
-import { systemTrayIcon } from "./utils/systemTrayIcon.js"; // Import the system tray icon function
 import { showModal } from "./views/Modal.js";
-import { QSystemTrayIcon } from "@nodegui/nodegui"; // Import QSystemTrayIcon
-
 
 import path from "path";
-import { app } from "@nodegui/nodegui";
+import { fileURLToPath } from "url";
 
+// Alternative for __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Resolve the assets directory
+const assetsPath = path.resolve(__dirname, "../assets");
 
 export const main = async () => {
 
@@ -27,23 +30,15 @@ export const main = async () => {
   const win = new QMainWindow();
   win.setWindowTitle("MemeSeeker");
 
-  // Set the app icon for the app bar
- // let assetsPath = "../assets/Kitty.png";
-  const appIconPath = path.join(__dirname, "../assets/Kitty.png");
+  // Set the app icon for the app bar and system tray
+  const appIconPath = path.join(assetsPath, "systray.png");
   const appIcon = new QIcon(appIconPath);
   win.setWindowIcon(appIcon);
 
-  // Create a system tray icon
-  const trayIcon = new QSystemTrayIcon();
-  trayIcon.setIcon(appIcon);
-  trayIcon.setToolTip("MemeSeeker");
-  trayIcon.show();
-
-  // Optional: Add a context menu to the system tray icon
-  // const trayMenu = new QMenu();
-  // trayMenu.addAction("Quit", () => process.exit(0));
-  // trayIcon.setContextMenu(trayMenu);
-
+  const tray = new QSystemTrayIcon();
+  tray.setIcon(appIcon);
+  tray.setToolTip("MemeSeeker");
+  tray.show();  
 
   const center = new QWidget();
   const centerLayout = new FlexLayout();
@@ -138,6 +133,7 @@ export const main = async () => {
     }
   `);
 
+  global.tray = tray; // Store the tray icon in a global variable
   global.win = win;
 };
 
