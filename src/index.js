@@ -20,7 +20,7 @@ const assetsPath = path.resolve(__dirname, "../assets");
 
 export const main = async () => {
 
-
+let searchTerms = ["3asba leha"]; // Initialize search terms array
 
  // state management
  let emptyLabel = null; // Track the empty label
@@ -31,7 +31,7 @@ export const main = async () => {
   win.setWindowTitle("MemeSeeker");
 
   // Set the app icon for the app bar and system tray
-  const appIconPath = path.join(assetsPath, "systray.png");
+  const appIconPath = path.join(assetsPath, "Kitty.png");
   const appIcon = new QIcon(appIconPath);
   win.setWindowIcon(appIcon);
 
@@ -58,6 +58,7 @@ export const main = async () => {
   // Create the search gContainer
   const searchContainer = createSearchContainer(async (searchTerm) => {
     console.log("search Term:", searchTerm);
+    searchTerms.push(searchTerm); // Add the search term to the array
     // some data manipulation
     addSearchTerm(searchTerm); 
     console.log("Session search Terms:", searchTerms);
@@ -138,3 +139,7 @@ export const main = async () => {
 };
 
 main();
+
+export const sessionSearchTerms = () => {
+  return searchTerms; // Return the session search terms
+}
