@@ -13,6 +13,9 @@ export function createSearchContainer(onSearch) {
       const searchInput = new QLineEdit();
       searchInput.setObjectName("searchInput");
       searchInput.setPlaceholderText("Search for gifs...");
+      searchInput.addEventListener("returnPressed", () => {
+        onSearch(searchInput.text());
+      });
     
       const searchButton = new QPushButton();
       searchButton.setObjectName("searchButton");
