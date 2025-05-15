@@ -3,15 +3,10 @@ import { searchGifs } from "../utils/searchGif.js";
 import { getGifViews } from "./GifViews.js";
 import { createSearchContainer } from "./SearchContainer.js";
 import { showModal } from "./Modal.js";
+
+import { ASSETS_DIR } from "../../config/paths.js";
 import path from "path";
-import { fileURLToPath } from "url";
-
-// Alternative for __dirname
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Resolve the assets directory (going up two levels from views folder)
-const assetsPath = path.resolve(__dirname, "../../assets");
+const appIconPath = path.join(ASSETS_DIR, "Kitty.png");
 
 
 export async function appUI()  {
@@ -30,7 +25,6 @@ export async function appUI()  {
       win.setWindowTitle("MemeSeeker");
     
       // Set the app icon for the app bar and system tray
-      const appIconPath = path.join(assetsPath, "Kitty.png");
       const appIcon = new QIcon(appIconPath);
       win.setWindowIcon(appIcon);
     

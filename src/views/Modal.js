@@ -2,13 +2,9 @@ import { QMessageBox, ButtonRole, QPushButton } from '@nodegui/nodegui';
 
 import { QIcon } from '@nodegui/nodegui';
 
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const assetsPath = path.resolve(__dirname, "../../assets");
+import { ASSETS_DIR } from "../../config/paths.js";
+import path from "path";
+const iconPath = path.join(ASSETS_DIR, "Kitty.png");
 
 
 export function showModal(title, details) { 
@@ -17,7 +13,6 @@ export function showModal(title, details) {
     modal.setText(title);
     modal.setDetailedText(details);
     modal.setWindowTitle("memeSeeker");
-    let iconPath = path.join(assetsPath, "Kitty.png");
     const icon = new QIcon(iconPath);
     modal.setWindowIcon(icon);
 
