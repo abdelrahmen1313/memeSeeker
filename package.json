@@ -15,8 +15,11 @@
   "author": "dah",
   "license": "ISC",
   "dependencies": {
+    "@nlpjs/nlp": "^5.0.0-alpha.5",
     "@nodegui/nodegui": "^0.71.0",
     "axios": "^1.8.4",
-    "ollama": "^0.5.15"
+    "node-nlp": "^5.0.0-alpha.5",
+    "ollama": "^0.5.15",
+    "wink-nlp": "^2.3.2"
   }
 }

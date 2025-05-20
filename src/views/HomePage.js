@@ -6,7 +6,7 @@ import { showModal } from "./Modal.js";
 
 import { resolvePath } from "../../config/paths.js";
 
-export async function appUI()  {
+export async function App()  {
     let searchTerms = []; // Initialize search terms array
   
 

@@ -1,5 +1,5 @@
 import { ApiKeyDialogue } from "./views/ApiKeyDialogue.js";
-import { appUI } from "./views/HomePage.js";
+import { App } from "./views/HomePage.js";
 
 
 
@@ -7,9 +7,9 @@ export const main = async () => {
    try {
      await ApiKeyDialogue();
    } catch (error) {
-     console.error("Error in ApiKeyDialogue:", error);
+     throw new Error("Error in ApiKeyDialogue:", error);
    }
-    appUI(); 
+    App(); 
 };
 
 main();
