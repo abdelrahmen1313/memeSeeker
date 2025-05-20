@@ -4,10 +4,7 @@ import { getGifViews } from "./GifViews.js";
 import { createSearchContainer } from "./SearchContainer.js";
 import { showModal } from "./Modal.js";
 
-import { ASSETS_DIR } from "../../config/paths.js";
-import path from "path";
-const appIconPath = path.join(ASSETS_DIR, "Kitty.png");
-
+import { resolvePath } from "../../config/paths.js";
 
 export async function appUI()  {
     let searchTerms = []; // Initialize search terms array
@@ -25,6 +22,7 @@ export async function appUI()  {
       win.setWindowTitle("MemeSeeker");
     
       // Set the app icon for the app bar and system tray
+      const appIconPath = resolvePath.asset('Kitty.png');
       const appIcon = new QIcon(appIconPath);
       win.setWindowIcon(appIcon);
     

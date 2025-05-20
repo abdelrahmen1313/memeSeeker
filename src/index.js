@@ -1,8 +1,15 @@
-
+import { ApiKeyDialogue } from "./views/ApiKeyDialogue.js";
 import { appUI } from "./views/HomePage.js";
 
+
+
 export const main = async () => {
-appUI(); 
+   try {
+     await ApiKeyDialogue();
+   } catch (error) {
+     console.error("Error in ApiKeyDialogue:", error);
+   }
+    appUI(); 
 };
 
 main();
