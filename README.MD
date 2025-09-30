@@ -42,5 +42,7 @@ To get started with this application, follow these steps:
 
 ## Contributing
 
-This is a school project, issues or suggetions are
+This is a school project, issues or suggestions are
 quitely welcomed.
+
+This project is currently under development and some parts are missing or not quitely linked.
